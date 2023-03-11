@@ -47,6 +47,7 @@ func main() {
 		if err != nil {
 			fmt.Printf("Error decrypting %s\n", file)
 			fmt.Println(err)
+			_ = os.Remove(file[:len(file)-4])
 			continue
 		}
 

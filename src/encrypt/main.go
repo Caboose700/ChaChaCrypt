@@ -156,6 +156,7 @@ func main() {
 		if err != nil {
 			fmt.Printf("Error encrypting %s\n", file)
 			fmt.Println(err)
+			_ = os.Remove(file + header.FV1Ext)
 			continue
 		}
 
