@@ -59,8 +59,11 @@ func parseArgs(args []string) (Params, error) {
 				fmt.Printf("Error: -m invalid syntax, using defaults\n")
 				continue
 			}
-
 			params.memory = uint16(memory64)
+			if params.memory < 1 {
+				fmt.Printf("Error: -m cannot be less than 1, setting to 1\n")
+				params.memory = 1
+			}
 			continue
 		}
 		if args[i] == "-i" {
@@ -74,6 +77,10 @@ func parseArgs(args []string) (Params, error) {
 			}
 
 			params.iterations = byte(iterations64)
+			if params.iterations < 1 {
+				fmt.Printf("Error: -i cannot be less than 1, setting to 1\n")
+				params.iterations = 1
+			}
 			continue
 		}
 		if args[i] == "-t" {
@@ -87,6 +94,10 @@ func parseArgs(args []string) (Params, error) {
 			}
 
 			params.threads = byte(threads64)
+			if params.threads < 1 {
+				fmt.Printf("Error: -i cannot be less than 1, setting to 1\n")
+				params.threads = 1
+			}
 			continue
 		}
 
